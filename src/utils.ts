@@ -4,11 +4,7 @@ export const getBrewedMessage = (
   brewedTime: string | null,
   isLoggedIn: boolean = false
 ) => {
-  if (!brewedTime && !isLoggedIn) {
-    return "There is no coffee, please sign in and mark as brewed";
-  }
-
-  if (!brewedTime && isLoggedIn) {
+  if (!brewedTime) {
     return "💔 There is no coffee. Please brew a pot and mark as brewed";
   }
 

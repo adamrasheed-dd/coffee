@@ -1,12 +1,5 @@
 import { useAppContext } from "./AppContext";
-import {
-  BrewButton,
-  Header,
-  Highlight,
-  LastBrewed,
-  LoginLink,
-  Message,
-} from "../styled";
+import { BrewButton, Highlight, LastBrewed, Message } from "../styled";
 import { formatTime, getBrewedMessage } from "../utils";
 
 const Home: React.FC = () => {
@@ -14,10 +7,6 @@ const Home: React.FC = () => {
     state: { isLoggedIn, lastBrewed },
     dispatch,
   } = useAppContext();
-
-  const handleLogin = () => {
-    dispatch({ type: "TOGGLE_LOGGED_IN", payload: true });
-  };
 
   const handleBrew = () => {
     const date = Date.now().toString();
@@ -29,18 +18,17 @@ const Home: React.FC = () => {
 
   return (
     <div>
-      <Header>
-        {!isLoggedIn && <LoginLink onClick={handleLogin}>Login</LoginLink>}
-      </Header>
       <Highlight>Is there coffee?</Highlight>
       <Message>{getBrewedMessage(lastBrewed, isLoggedIn)}</Message>
 
       {lastBrewed && (
-        <LastBrewed>Last brewed at {formatTime(lastBrewed)}</LastBrewed>
+        <LastBrewed>
+          Last brewed at <strong>{formatTime(lastBrewed)}</strong>
+        </LastBrewed>
       )}
 
       <BrewButton small={!!lastBrewed} onClick={handleBrew}>
-        Mark as Brewed
+        {lastBrewed ? "Brew again" : "Mark as Brewed"}
       </BrewButton>
     </div>
   );

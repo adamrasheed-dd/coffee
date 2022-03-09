@@ -4,7 +4,7 @@ import { AppContextProvider } from "./components/AppContext";
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Stats from "./components/Stats";
-import { Footer, Layout } from "./styled";
+import { Footer, Heart, Layout } from "./styled";
 
 const location = new ReactLocation();
 
@@ -22,7 +22,9 @@ const App: React.FC = () => {
       >
         <Layout>
           <Outlet />
-          <Footer>Made with ❤️ by the eng team</Footer>
+          <Footer>
+            Made with <Heart>❤️</Heart> by the eng team
+          </Footer>
         </Layout>
       </Router>
     </AppContextProvider>

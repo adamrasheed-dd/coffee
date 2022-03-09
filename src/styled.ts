@@ -5,7 +5,7 @@ export const Layout = styled.div`
   flex-direction: column;
   align-items: stretch;
   min-height: 100vh;
-  padding: 1rem;
+  padding: 2rem;
 `;
 
 export const Header = styled.div`
@@ -40,7 +40,7 @@ export const Highlight = styled.p`
 `;
 
 export const Message = styled.p`
-  font-size: 4rem;
+  font-size: 3rem;
   margin: 1rem 0;
 `;
 
@@ -49,7 +49,7 @@ type BrewButtonProps = {
 };
 
 export const BrewButton = styled.button<BrewButtonProps>`
-  background: var(--color-highlight);
+  background: var(--color-yellow);
   font-size: 2rem;
   padding: 0.75rem 1.5rem;
   display: block;
@@ -65,5 +65,15 @@ export const BrewButton = styled.button<BrewButtonProps>`
 `;
 
 export const LastBrewed = styled.p`
+  font-size: 2rem;
   margin: 1rem 0;
+
+  & strong: {
+    font-weight: bold;
+  }
+`;
+
+export const Heart = styled.span`
+  display: "inline-block";
+  margin: 0 0.5rem 0 0;
 `;

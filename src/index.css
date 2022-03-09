@@ -38,7 +38,7 @@ code {
 @media (prefers-color-scheme: dark) {
   body {
     --color-text: #e7e8f1;
-    --color-bg: #000;
+    --color-bg: #121212;
     --color-highlight: #a58e39;
   }
 }
