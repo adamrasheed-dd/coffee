@@ -1,8 +1,8 @@
-import { useAppContext } from "../components/AppContext";
+import styled from "styled-components";
+
 import { Highlight } from "../styled";
 import useCoffeePots from "../hooks/useCoffeePots";
 import CoffeePotCard from "../components/CoffeePotCard";
-import styled from "styled-components";
 
 const CoffeePotContainer = styled.div`
   display: grid;
@@ -13,11 +13,6 @@ const CoffeePotContainer = styled.div`
 
 const Home: React.FC = () => {
   const { coffeePots, isLoading, error } = useCoffeePots();
-
-  const {
-    state: { isLoggedIn },
-    dispatch,
-  } = useAppContext();
 
   if (error) {
     console.error(error);
