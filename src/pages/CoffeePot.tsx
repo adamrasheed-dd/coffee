@@ -36,8 +36,6 @@ const CoffeePot = () => {
 
   const { body } = coffeePot as { body: PotType[] };
 
-  const isPageLoading = isSubmitting || isLoading;
-
   const pot = body[0];
 
   supabase
