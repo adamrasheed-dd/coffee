@@ -37,6 +37,7 @@ export const Highlight = styled.p`
   width: fit-content;
   padding: 0.125rem 0.5rem;
   transform: skew(-13deg, 0deg);
+  margin: 1rem 0;
 `;
 
 export const Message = styled.p`
