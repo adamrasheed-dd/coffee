@@ -17,6 +17,7 @@ const AppContextProvider: FC = ({ children }) => {
 
   const contextValue = useMemo(() => {
     console.log({ state });
+
     return { state, dispatch };
   }, [state, dispatch]);
 
