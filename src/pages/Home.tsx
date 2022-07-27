@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { Highlight } from "../styled";
 import useCoffeePots from "../hooks/useCoffeePots";
 import CoffeePotCard from "../components/CoffeePotCard";
+import { useAppContext } from "../components/AppContext";
+import { Navigate } from "react-location";
+import { ROUTES } from "../constants";
+import { supabase } from "../api";
 
 const CoffeePotContainer = styled.div`
   display: grid;
@@ -12,7 +16,19 @@ const CoffeePotContainer = styled.div`
 `;
 
 const Home: React.FC = () => {
+  const {
+    state: { userId },
+  } = useAppContext();
+
+  const user = supabase.auth.user();
+
+  console.log({ user });
+
   const { coffeePots, isLoading, error } = useCoffeePots();
+
+  if (!userId) {
+    return <Navigate to={ROUTES.LOGIN} />;
+  }
 
   if (error) {
     console.error(error);

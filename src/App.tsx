@@ -8,7 +8,7 @@ import {
 import { AppContextProvider } from "./components/AppContext";
 
 import Home from "./pages/Home";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import Stats from "./components/Stats";
 import CoffeePot from "./pages/CoffeePot";
 import { Footer, Heart, Layout } from "./styled";
@@ -58,11 +58,7 @@ const App: React.FC = () => {
 
   return (
     <AppContextProvider>
-      <Router
-        // defaultElement={<p>Default</p>}
-        location={location}
-        routes={routes as any}
-      >
+      <Router location={location} routes={routes as any}>
         <Layout>
           <Header />
           <Outlet />

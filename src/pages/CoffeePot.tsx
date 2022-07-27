@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import { useMatch } from "react-location";
+import { Navigate, useMatch } from "react-location";
 import styled from "styled-components";
 import { supabase } from "../api";
 import { fetchBrews } from "../api/fetchBrews";
+import { useAppContext } from "../components/AppContext";
 import BrewHistory from "../components/BrewHistory";
 import Loading from "../components/Loading";
+import { ROUTES } from "../constants";
 import { Brew, CoffeePot as PotType } from "../types";
 import { formatDate } from "../utils";
 
@@ -20,11 +22,14 @@ const Button = styled.button`
   padding: 1rem 2rem;
   margin: 10vh auto;
   border: none;
-  background: #8bc9f0;
+  background: var(--color-yellow);
   border-radius: 0.25rem;
 `;
 
 const CoffeePot = () => {
+  const {
+    state: { userId },
+  } = useAppContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [brewTimes, setBrewTimes] = useState<Brew[]>([]);
 
@@ -47,6 +52,11 @@ const CoffeePot = () => {
 
   useEffect(() => {
     const getBrewTimes = async () => {
+      console.log("wat");
+      if (!userId) {
+        return <Navigate to={ROUTES.LOGIN} />;
+      }
+
       const { data, error } = await fetchBrews(pot.id);
 
       if (data) {
