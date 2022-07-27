@@ -17,7 +17,7 @@ const CoffeePotContainer = styled.div`
 
 const Home: React.FC = () => {
   const {
-    state: { userToken },
+    state: { userId },
   } = useAppContext();
 
   const user = supabase.auth.user();
@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 
   const { coffeePots, isLoading, error } = useCoffeePots();
 
-  if (!userToken) {
+  if (!userId) {
     return <Navigate to={ROUTES.LOGIN} />;
   }
 

@@ -28,7 +28,7 @@ const Button = styled.button`
 
 const CoffeePot = () => {
   const {
-    state: { userToken },
+    state: { userId },
   } = useAppContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [brewTimes, setBrewTimes] = useState<Brew[]>([]);
@@ -53,7 +53,7 @@ const CoffeePot = () => {
   useEffect(() => {
     const getBrewTimes = async () => {
       console.log("wat");
-      if (!userToken) {
+      if (!userId) {
         return <Navigate to={ROUTES.LOGIN} />;
       }
 

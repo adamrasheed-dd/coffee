@@ -26,7 +26,7 @@ const LogoutButton = styled(Button)`
 
 const Login: React.FC = () => {
   const {
-    state: { userToken },
+    state: { userId },
     dispatch,
   } = useAppContext();
 
@@ -64,9 +64,7 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Button onClick={handleLogin}>Log in</Button>
-      {!!userToken && (
-        <LogoutButton onClick={handleLogout}>Log out</LogoutButton>
-      )}
+      {!!userId && <LogoutButton onClick={handleLogout}>Log out</LogoutButton>}
     </Container>
   );
 };

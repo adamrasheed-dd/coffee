@@ -1,6 +1,6 @@
 export type State = {
   theme: "light" | "dark";
-  userToken: string | null;
+  userId: string | null;
 };
 
 export type Action =
@@ -11,7 +11,7 @@ export type Action =
   | { type: "LOG_OUT" };
 
 export const initialContext: State = {
-  userToken: null,
+  userId: null,
   theme: "light",
 };
 
@@ -23,13 +23,13 @@ export const appReducer = (
     case "LOG_IN":
       return {
         ...state,
-        userToken: action.payload,
+        userId: action.payload,
       };
 
     case "LOG_OUT":
       return {
         ...state,
-        userToken: null,
+        userId: null,
       };
 
     default:
