@@ -12,7 +12,7 @@ const useCoffeePots = () => {
   useEffect(() => {
     const getPots = async () => {
       setIsLoading(true);
-      const { data, statusText, error } = await supabase
+      const { data, error } = await supabase
         .from<CoffeePot>("pots")
         .select("*");
 
