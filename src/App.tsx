@@ -14,6 +14,7 @@ import CoffeePot from "./pages/CoffeePot";
 import { Footer, Heart, Layout } from "./styled";
 import fetchCoffeePot from "./api/fetchCoffeePot";
 import Header from "./components/Header";
+import { supabase } from "./api";
 
 const location = new ReactLocation();
 
@@ -27,6 +28,8 @@ type LocationGenerics = MakeGenerics<{
 }>;
 
 const App: React.FC = () => {
+  const user = supabase.auth.user();
+
   const routes: Route<LocationGenerics>[] = [
     { path: "/", element: <Home /> },
     {
@@ -34,7 +37,7 @@ const App: React.FC = () => {
       children: [
         {
           path: ":id",
-          element: <CoffeePot />,
+          element: !!user ? <CoffeePot /> : <Login />,
           meta: {
             breadcrumb: (params) => <p>{params.id}</p>,
           },

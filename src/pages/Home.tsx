@@ -18,8 +18,6 @@ const CoffeePotContainer = styled.div`
 const Home: React.FC = () => {
   const user = supabase.auth.user();
 
-  console.log({ user });
-
   const { coffeePots, isLoading, error } = useCoffeePots();
 
   if (!user) {

@@ -52,7 +52,6 @@ const CoffeePot = () => {
 
   useEffect(() => {
     const getBrewTimes = async () => {
-      console.log("wat");
       if (!userId) {
         return <Navigate to={ROUTES.LOGIN} />;
       }
