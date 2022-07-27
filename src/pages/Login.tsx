@@ -25,14 +25,9 @@ const LogoutButton = styled(Button)`
 `;
 
 const Login: React.FC = () => {
-  const {
-    state: { userId },
-    dispatch,
-  } = useAppContext();
+  const { dispatch } = useAppContext();
 
   const user = supabase.auth.user();
-
-  console.log({ user });
 
   const handleLogin = async () => {
     supabase.auth
@@ -64,7 +59,7 @@ const Login: React.FC = () => {
   return (
     <Container>
       <Button onClick={handleLogin}>Log in</Button>
-      {!!userId && <LogoutButton onClick={handleLogout}>Log out</LogoutButton>}
+      {!!user && <LogoutButton onClick={handleLogout}>Log out</LogoutButton>}
     </Container>
   );
 };
